@@ -1,0 +1,238 @@
+{% extends 'main.html' %}
+{% block content %}
+
+<div class="row" style="margin-bottom: 125px;">
+    <div class="col-md-1">
+    </div>
+    <div class="col-md-6">
+        <center><h1>Kidney Disease Predictor</h1></center>
+        <div class="card card-body" style="border: 1px solid black;">
+            <form class="form-horizontal" action="{{ url_for('predictPage') }}" method="POST">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label style="color:blue;">AGE</label>
+                            <input style="border: 1px solid black;" class="form-control" type="text" name="age" placeholder="1-100">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label style="color:blue;">Blood Pressure</label>
+                            <input style="border: 1px solid black;" class="form-control" type="text" name="bp">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label style="color:blue;">Albumin</label>
+                            <input style="border: 1px solid black;" class="form-control" type="text" name="al" placeholder="0-5 ">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label style="color:blue;">Sugar</label>
+                            <input style="border: 1px solid black;" class="form-control" type="text" name="su" placeholder="0-5">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label style="color:blue;">Rbc</label>
+                            <input style="border: 1px solid black;" class="form-control" type="text" name="rbc" placeholder="0/1">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label style="color:blue;">Pus Cell</label>
+                            <input style="border: 1px solid black;" class="form-control" type="text" name="pc" placeholder="0/1">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label style="color:blue;">Pus Cell Clumps</label>
+                            <input style="border: 1px solid black;" class="form-control" type="text" name="pcc" placeholder="0/1">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label style="color:blue;">Bacteria</label>
+                            <input style="border: 1px solid black;" class="form-control" type="text" name="ba" placeholder="0/1">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label style="color:blue;">Blood Glucose Random</label>
+                            <input style="border: 1px solid black;" class="form-control" type="text" name="bgr">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label style="color:blue;">Blood Urea</label>
+                            <input style="border: 1px solid black;" class="form-control" type="text" name="bu">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label style="color:blue;">Serum Creatinine</label>
+                            <input style="border: 1px solid black;" class="form-control" type="text" name="sc">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label style="color:blue;">Potassium</label>
+                            <input style="border: 1px solid black;" class="form-control" type="text" name="pot">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label style="color:blue;">Wbc Count</label>
+                            <input style="border: 1px solid black;" class="form-control" type="text" name="wc">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label style="color:blue;">Hypertension</label>
+                            <input style="border: 1px solid black;" class="form-control" type="text" name="htn" placeholder="0/1">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label style="color:blue;">Diabetes Mellitus</label>
+                            <input style="border: 1px solid black;" class="form-control" type="text" name="dm" placeholder="0/1">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label style="color:blue;">Coronary Artery Disease</label>
+                            <input style="border: 1px solid black;" class="form-control" type="text" name="cad" placeholder="0/1">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label style="color:blue;">Pedal Edema</label>
+                            <input style="border: 1px solid black;" class="form-control" type="text" name="pe" placeholder="0/1">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label style="color:blue;">Anemia</label>
+                            <input style="border: 1px solid black;" class="form-control" type="text" name="ane" placeholder="0/1">
+                        </div>
+                    </div>
+                </div>
+                <input type="submit" class="btn btn-info btn-block" value="Predict">
+            </form>
+        </div>
+    </div>
+    <div class="col-md-1">
+
+    </div>
+    <div class="col-md-3">
+        <h3 style="text-align: center"> Sample Inputs</h3>
+        <style>
+            tr {
+                display: block;
+                float: left;
+            }
+
+            th, td {
+                display: block;
+            }
+        </style>
+
+        <table class="table">
+            <tr>
+                <th scope="col">age</th>
+                <th scope="col">bp</th>
+                <th scope="col">al</th>
+                <th scope="col">su</th>
+                <th scope="col">rbc</th>
+                <th scope="col">pc</th>
+                <th scope="col">pcc</th>
+                <th scope="col">ba</th>
+                <th scope="col">bgr</th>
+                <th scope="col">bu</th>
+                <th scope="col">sc</th>
+                <th scope="col">pot</th>
+                <th scope="col">wc</th>
+                <th scope="col">htn</th>
+                <th scope="col">dm</th>
+                <th scope="col">cad</th>
+                <th scope="col">pe</th>
+                <th scope="col">ane</th>
+                <th scope="col">Disease</th>
+            </tr>
+            <tr>
+                <td>24</td>
+                <td>100</td>
+                <td>2</td>
+                <td>0</td>
+                <td>1</td>
+                <td>0</td>
+                <td>1</td>
+                <td>0</td>
+                <td>136</td>
+                <td>60</td>
+                <td>1.9</td>
+                <td>3.7</td>
+                <td>9600</td>
+                <td>1</td>
+                <td>1</td>
+                <td>0</td>
+                <td>0</td>
+                <td>1</td>
+                <td>Present</td>
+            </tr>
+            <tr>
+                <td>68</td>
+                <td>80</td>
+                <td>3</td>
+                <td>0</td>
+                <td>0</td>
+                <td>1</td>
+                <td>0</td>
+                <td>0</td>
+                <td>157</td>
+                <td>162</td>
+                <td>9.6</td>
+                <td>4.9</td>
+                <td>11000</td>
+                <td>0</td>
+                <td>1</td>
+                <td>0</td>
+                <td>0</td>
+                <td>1</td>
+                <td>Present</td>
+            </tr>
+            <tr>
+                <td>51</td>
+                <td>110</td>
+                <td>0</td>
+                <td>0</td>
+                <td>1</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>121</td>
+                <td>27</td>
+                <td>0.8</td>
+                <td>3.7</td>
+                <td>8300</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>Healthy</td>
+            </tr>
+        </table>
+
+        {% endblock %}
